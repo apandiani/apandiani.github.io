@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 import asyncio
-import csv
+# import csv
 
 
 async def clock():
