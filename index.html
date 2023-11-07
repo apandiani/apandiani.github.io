@@ -7,7 +7,22 @@
         <text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registered');
+                  }).catch(function(err) {
+                    console.log('ServiceWorker error: ', err);
+                  });
+            })
+        }
+    </script>
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
     <link rel="stylesheet" href="https://pyscript.net/snapshots/2023.11.1.RC3/core.css" />
     <script type="module" src="https://pyscript.net/snapshots/2023.11.1.RC3/core.js"></script>
 
