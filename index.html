@@ -28,72 +28,72 @@
 
     <style>
 
-    body {
-        background-color:#414247;
-        padding: 15px;
-        margin: 0px;
-        font-family: "Calibri Light";
-    }
+        body {
+            background-color:#414247;
+            padding: 15px;
+            margin: 0px;
+            font-family: "Calibri Light";
+        }
 
-    body, h1, h2, h3, h4, h5, h6 {
-        font-family: "Calibri Light";
-        color: white;
-    }
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Calibri Light";
+            color: white;
+        }
 
 
 
-    table {
-        font-family: "Calibri Light", sans-serif;
-        width: 60%;
-        border-spacing: 20px;
-    }
+        table {
+            font-family: "Calibri Light", sans-serif;
+            width: 60%;
+            border-spacing: 20px;
+        }
 
-    td,
-    th {
-        border: 1px solid #dddddd;
-        text-align: center;
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
 
-    /* tr:nth-child(even) {
-    background-color: #dddddd;
-    } */
+        /* tr:nth-child(even) {
+        background-color: #dddddd;
+        } */
 
-    .collapsible {
-        background-color: #7B8A8D;
-        /* color: white; */
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 20px;
-        margin-bottom: 30px;
-    }
+        .collapsible {
+            background-color: #7B8A8D;
+            /* color: white; */
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
 
-    /* .active, .collapsible:hover {
-    background-color: #555;
-    } */
+        /* .active, .collapsible:hover {
+        background-color: #555;
+        } */
 
-    .content {
-        display: none;
-        margin-left: auto;
-        margin-right: auto;
-        color: white;
-    }
+        .content {
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
 
-    .sticky {
-        position: fixed;
-        top: 0;
-        width: 100%;
-    }
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
 
-    .sticky + .content {
-        width: 100%;
-        padding-top: 102px;
-    }
+        .sticky + .content {
+            width: 100%;
+            padding-top: 102px;
+        }
 
     </style>
 
@@ -114,40 +114,11 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
                 <header class="w3-container w3-orange">
-                <h4 class="w3-wide w3-text-black"><b>TODAY</b></h4>
+                <h5 class="w3-wide w3-text-black"><b>TODAY</b></h5>
                 </header>
-
-            </div>
-        </div>
-
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4">
-                <header class="w3-container w3-orange">
-                <h4 class="w3-wide w3-text-black"><b>POST-IT'S</b></h4>
-                </header>
-                <div class="w3-container">
-                    <div class="w3-ul w3-large">
-                        <li class="w3-display-container">Task 1
-                            <span onclick="this.parentElement.style.display='none'"
-                            class="w3-button w3-display-right">&times;</span>
-                        </li>
-                        <li class="w3-display-container">Task 2
-                            <span onclick="this.parentElement.style.display='none'"
-                            class="w3-button w3-display-right">&times;</span>
-                        </li>
-                        <li class="w3-display-container">Task 3
-                            <span onclick="this.parentElement.remove()"
-                            class="w3-button w3-display-right">&times;</span>
-                        </li>
-                    </div>
-                    <div class="w3-cell-row w3-section">
-                        <div class="w3-container w3-cell">
-                            <input class="w3-input" type="text" placeholder="Task">
-                        </div>
-                        <div class="w3-container w3-cell">
-                            <button class="w3-button w3-orange w3-right">+</button>
-                        </div>
-                    </div>
+                <div style="width:280px;height:331px" class="w3-content">
+                    <iframe scrolling="no" style="border:0;width:100%;height:100%"
+                    src="https://search.ch/meteo/widget/Bubikon?bgcolor=414247&amp;fgcolor=ffffff&amp;days=1"></iframe>
                 </div>
             </div>
         </div>
@@ -155,7 +126,18 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
                 <header class="w3-container w3-orange">
-                <h4 class="w3-wide w3-text-black"><b>LINKS</b></h4>
+                <h5 class="w3-wide w3-text-black"><b>ST2</b></h5>
+                </header>
+                <div class="w3-container">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4">
+                <header class="w3-container w3-orange">
+                <h5 class="w3-wide w3-text-black"><b>LINKS</b></h5>
                 </header>
                 <div class="w3-container">
                     <div class="w3-ul w3-large">
@@ -166,7 +148,7 @@
                             <a href="https://www.google.ch/" target="_blank">Google</a>
                         </li>
                         <li>
-                            <a href="https://docs.pyscript.net/2023.09.1.RC2/" target="_blank">PyScript Docs</a>
+                            <a href="https://docs.pyscript.net/latest" target="_blank">PyScript Docs</a>
                         </li>
                     </div>
                 </div>
@@ -176,37 +158,10 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
                 <header class="w3-container w3-orange">
-                <h4 class="w3-wide w3-text-black"><b>TIME AND WEATHER</b></h4>
+                <h5 class="w3-wide w3-text-black"><b>SOMETHING</b></h5>
                 </header>
                 <div class="w3-container">
-                    <!-- <table class="w3-table">
-                        <tr>
-                            <th style="width:33%">
-                                <h1>Bubikon</h1>
-                            </th>
-                            <th style="width:33%">
-                                <h1>Hyderabad</h1>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Maria Anders</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <iframe style="width: 100%; border: none; height: 260px; background-color: transparent;" src="https://www.wetter.de/widget/heute/u0qkbsvv/false/"></iframe>
-                            </td>
-                            <td>
-                                <iframe style="width: 100%; border: none; height: 260px; background-color: transparent;" src="https://www.wetter.de/widget/heute/ts887um1/false/"></iframe>
-                            </td>
-                        </tr>
-                        </tr>
-                    </table> -->
-    
-                    <div style="width:280px;height:331px" class="w3-content">
-                        <iframe scrolling="no" style="border:0;width:100%;height:100%"
-                        src="https://search.ch/meteo/widget/Bubikon?bgcolor=414247&amp;fgcolor=ffffff&amp;days=1"></iframe>
-                    </div>
+                    <p>Something</p>
                 </div>
             </div>
         </div>
@@ -216,7 +171,7 @@
     </div>
 
 
-    <script type="py" src="./main.py"></script>
+    <script type="py" src="./main.py" config="pyscript.toml"></script>
 
 
 
