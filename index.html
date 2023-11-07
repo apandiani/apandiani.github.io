@@ -2,41 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>APA Dashboard</title>
+    <title>Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+        <text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css ">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://pyscript.net/snapshots/2023.11.1.RC3/core.css" />
-    <script defer src="https://pyscript.netsnapshots/2023.11.1.RC3/core.js"></script>
+    <script type="module" src="https://pyscript.net/snapshots/2023.11.1.RC3/core.js"></script>
 
     <style>
-    
-    .header {
-        background-color: #414247;
-        padding: 5px;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        border-bottom: 1px solid #7B8A8D;
-    }
-
-    .header-item {
-        padding: 0px;
-        margin: 0px;
-    }
 
     body {
-        background-color: #414247;
-        padding: 30px;
+        background-color:#414247;
+        padding: 15px;
         margin: 0px;
         font-family: "Calibri Light";
     }
 
-    h1,
-    h2,
-    h3,
-    h4 {
+    body, h1, h2, h3, h4, h5, h6 {
         font-family: "Calibri Light";
         color: white;
     }
@@ -101,16 +85,128 @@
 </head>
 
 <body>
-    <py-script src="./main.py"></py-script>
+    <header class="w3-cell-row w3-border-bottom">
+        <div class="w3-container w3-cell w3-cell-bottom">
+            <h3>Dashboard</h3>
+        </div>
+        <div class="w3-container w3-cell w3-cell-bottom">
+            <h4 id="time_output" class="w3-right-align">.</h4>
+        </div>
+    </header>
 
-    <div class="header" id="myHeader">
-        <div class="header-item">
-            <h1 style="margin: 0px; padding: 0px;">APA Dashboard</h2>
+    <div class="w3-row">
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4">
+                <header class="w3-container w3-orange">
+                <h4 class="w3-wide w3-text-black"><b>TODAY</b></h4>
+                </header>
+                <div class="w3-container w3-xlarge">
+                    <p>Logged time:</p>
+                    <p id="logged_time">.</p>
+                </div>
+            </div>
         </div>
-        <div class="header-item" >
-            <h2 id="time_output" style="margin: 0px; padding: 0px;">.</h2>
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4">
+                <header class="w3-container w3-orange">
+                <h4 class="w3-wide w3-text-black"><b>POST-IT'S</b></h4>
+                </header>
+                <div class="w3-container">
+                    <div class="w3-ul w3-large">
+                        <li class="w3-display-container">Task 1
+                            <span onclick="this.parentElement.style.display='none'"
+                            class="w3-button w3-display-right">&times;</span>
+                        </li>
+                        <li class="w3-display-container">Task 2
+                            <span onclick="this.parentElement.style.display='none'"
+                            class="w3-button w3-display-right">&times;</span>
+                        </li>
+                        <li class="w3-display-container">Task 3
+                            <span onclick="this.parentElement.remove()"
+                            class="w3-button w3-display-right">&times;</span>
+                        </li>
+                    </div>
+                    <div class="w3-cell-row w3-section">
+                        <div class="w3-container w3-cell">
+                            <input class="w3-input" type="text" placeholder="Task">
+                        </div>
+                        <div class="w3-container w3-cell">
+                            <button class="w3-button w3-orange w3-right">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4">
+                <header class="w3-container w3-orange">
+                <h4 class="w3-wide w3-text-black"><b>LINKS</b></h4>
+                </header>
+                <div class="w3-container">
+                    <div class="w3-ul w3-large">
+                        <li>
+                            <a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.ch/" target="_blank">Google</a>
+                        </li>
+                        <li>
+                            <a href="https://docs.pyscript.net/2023.09.1.RC2/" target="_blank">PyScript Docs</a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4">
+                <header class="w3-container w3-orange">
+                <h4 class="w3-wide w3-text-black"><b>TIME AND WEATHER</b></h4>
+                </header>
+                <div class="w3-container">
+                    <!-- <table class="w3-table">
+                        <tr>
+                            <th style="width:33%">
+                                <h1>Bubikon</h1>
+                            </th>
+                            <th style="width:33%">
+                                <h1>Hyderabad</h1>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <iframe style="width: 100%; border: none; height: 260px; background-color: transparent;" src="https://www.wetter.de/widget/heute/u0qkbsvv/false/"></iframe>
+                            </td>
+                            <td>
+                                <iframe style="width: 100%; border: none; height: 260px; background-color: transparent;" src="https://www.wetter.de/widget/heute/ts887um1/false/"></iframe>
+                            </td>
+                        </tr>
+                        </tr>
+                    </table> -->
+    
+                    <div style="width:280px;height:331px" class="w3-content">
+                        <iframe scrolling="no" style="border:0;width:100%;height:100%"
+                        src="https://search.ch/meteo/widget/Bubikon?bgcolor=414247&amp;fgcolor=ffffff&amp;days=1"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
+
+
+    <script type="py" src="./main.py"></script>
+
+
 
 </body>
 
