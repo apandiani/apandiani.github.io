@@ -23,8 +23,8 @@
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
-    <link rel="stylesheet" href="https://pyscript.net/snapshots/2023.11.1.RC3/core.css" />
-    <script type="module" src="https://pyscript.net/snapshots/2023.11.1.RC3/core.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
 
     <style>
 
@@ -56,44 +56,8 @@
             padding-bottom: 30px;
         }
 
-        /* tr:nth-child(even) {
-        background-color: #dddddd;
-        } */
 
-        .collapsible {
-            background-color: #7B8A8D;
-            /* color: white; */
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
 
-        /* .active, .collapsible:hover {
-        background-color: #555;
-        } */
-
-        .content {
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            color: white;
-        }
-
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-
-        .sticky + .content {
-            width: 100%;
-            padding-top: 102px;
-        }
 
     </style>
 
@@ -126,7 +90,7 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
                 <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>ST2</b></h5>
+                <h6 class="w3-wide w3-text-black"><b>ST2</b></h6>
                 </header>
                 <div class="w3-container">
 
@@ -137,7 +101,7 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
                 <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>LINKS</b></h5>
+                <h6 class="w3-wide w3-text-black"><b>LINKS</b></h6>
                 </header>
                 <div class="w3-container">
                     <div class="w3-ul w3-large">
@@ -157,9 +121,9 @@
 
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4">
-                <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>SOMETHING</b></h5>
-                </header>
+                <div class="w3-container w3-orange">
+                <h6 class="w3-wide w3-text-black"><b>SOMETHING</b></h6>
+                </div>
                 <div class="w3-container">
                     <p>Something</p>
                 </div>
@@ -170,8 +134,12 @@
 
     </div>
 
+    <!-- <py-config>
+        [[fetch]]
+        files = ['https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv']
+    </py-config> -->
 
-    <script type="py" src="./main.py" config="pyscript.toml"></script>
+    <py-script src="./main.py" config="pyscript.toml"></py-script>
 
 
 

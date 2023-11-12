@@ -14,33 +14,21 @@ async def clock():
 run_clock = asyncio.ensure_future(clock())
 
 
-# from pyodide.http import pyfetch
-# import pyodide_http
-# pyodide_http.patch_all()
-# import requests
+from pyodide.http import pyfetch
 # import pandas as pd
-# import io
 
 async def csv(file):
-	# username = os.environ['csv_username']
-	# token = os.environ['csv_token']
-    username = 'apandiani'
-    token = '259fd04469ea337c8c32be28183b84536e59c7ba'
  
-    path = '/home/apandiani/requests/{file}.csv'.format(file=file)
 
-    URL = 'https://eu.pythonanywhere.com/api/v0/user/{username}/files/path{path}'.format(username=username, path=path)
-    response = await pyfetch(url=URL, method="GET")
     
-
-    # response = await requests.get(
-	#  'https://eu.pythonanywhere.com/api/v0/user/{username}/files/path{path}'.
-	#  format(username=username, path=path),
-	#  headers={'Authorization': 'Token {token}'.format(token=token)})
+    response = await pyfetch(url=file, method="GET")
+    
 
     print(response.status)
 
-    # df = pd.read_csv(io.StringIO(response.content.decode('utf_8')))
-
+    # df = pd.read_csv(response)
+    # print(df)
     # return df
-# st2 = asyncio.ensure_future(csv('get_st2'))
+
+URL = 'https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv'
+st2 = asyncio.ensure_future(csv(URL))
