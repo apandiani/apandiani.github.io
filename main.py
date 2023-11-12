@@ -14,21 +14,21 @@ async def clock():
 run_clock = asyncio.ensure_future(clock())
 
 
-from pyodide.http import pyfetch
+# from pyodide.http import pyfetch
 # import pandas as pd
 
-async def csv(file):
+# async def csv(file):
  
 
     
-    response = await pyfetch(url=file, method="GET")
+    # response = await pyfetch(url=file, method="GET")
     
 
-    print(response.status)
+    # print(response.status)
 
     # df = pd.read_csv(response)
     # print(df)
     # return df
 
-URL = 'https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv'
-st2 = asyncio.ensure_future(csv(URL))
+# URL = 'https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv'
+# st2 = asyncio.ensure_future(csv(URL))
