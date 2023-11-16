@@ -93,7 +93,9 @@
                 <h6 class="w3-wide w3-text-black"><b>ST2</b></h6>
                 </header>
                 <div class="w3-container">
-
+                    <p id="st2_tot">.</p>
+                    <p id="st2_bat">.</p>
+                    <p id="st2_date">.</p>
                 </div>
             </div>
         </div>
@@ -134,10 +136,6 @@
 
     </div>
 
-    <py-config>
-        [[fetch]]
-        files = ['https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv']
-    </py-config>
 
     <py-script src="./main.py" config="pyscript.toml"></py-script>
 

@@ -1,8 +1,11 @@
 from pyscript import document
+from pyodide.http import pyfetch
+# import json
+# from pyodide.http import open_url
+# import pandas as pd
 
 from datetime import datetime as dt
 import asyncio
-
 
 async def clock():
     while True:
@@ -13,22 +16,25 @@ async def clock():
         await asyncio.sleep(2)
 run_clock = asyncio.ensure_future(clock())
 
+# async def get_data(url):
+#     response = await pyfetch(url=url, method="GET")
+#     # print(await response.json())
+#     data = await response.json()
+#     print(data)
+# server_test = asyncio.ensure_future(get_data('https://apandiani.eu.pythonanywhere.com/'))
 
-# from pyodide.http import pyfetch
-# import pandas as pd
-
-# async def csv(file):
- 
-
-    
-    # response = await pyfetch(url=file, method="GET")
-    
-
-    # print(response.status)
-
-    # df = pd.read_csv(response)
-    # print(df)
-    # return df
-
-# URL = 'https://apandiani.eu.pythonanywhere.com/csv/get_st2.csv'
-# st2 = asyncio.ensure_future(csv(URL))
+async def show_st2():
+    response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/data', method="GET")
+    data = await response.json()
+    print(data)
+    k_list = [k for k in data.keys()]
+    st2_tot = data[k_list[0]]['Total distance']
+    st2_bat = data[k_list[0]]['Battery health']
+    st2_date = data[k_list[0]]['Date']
+    output_tot = document.querySelector("#st2_tot")
+    output_tot.innerText = f'Total distance: {st2_tot} km'
+    output_bat = document.querySelector("#st2_bat")
+    output_bat.innerText = f'Battery health: {st2_bat} %'
+    output_date = document.querySelector("#st2_date")
+    output_date.innerText = f'Last update: {st2_date}'
+st2_data = asyncio.ensure_future(show_st2())
