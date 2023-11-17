@@ -24,7 +24,7 @@ run_clock = asyncio.ensure_future(clock())
 # server_test = asyncio.ensure_future(get_data('https://apandiani.eu.pythonanywhere.com/'))
 
 async def show_st2():
-    response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/data', method="GET")
+    response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/st2', method="GET")
     data = await response.json()
     print(data)
     k_list = [k for k in data.keys()]
@@ -38,3 +38,19 @@ async def show_st2():
     output_date = document.querySelector("#st2_date")
     output_date.innerText = f'Last update: {st2_date}'
 st2_data = asyncio.ensure_future(show_st2())
+
+
+async def stromer_feed():
+    response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/stromer', method="GET")
+    feed = await response.json()
+    print(feed)
+    for x in feed:
+        # print(x)
+        output_div = document.querySelector("#stromer_feed")
+        child = document.createElement('p')
+        child.innerText = x
+        output_div.appendChild(child)
+        # output_div.innerText = x
+        # child = document.createElement('p')
+        # output_p = document.querySelector(f'#{element_id}')
+stromer_feed = asyncio.ensure_future(stromer_feed())

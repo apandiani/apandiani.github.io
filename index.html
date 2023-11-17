@@ -29,7 +29,7 @@
     <style>
 
         body {
-            background-color:#414247;
+            background-color: #2d2d2d;
             padding: 15px;
             margin: 0px;
             font-family: "Calibri Light";
@@ -56,7 +56,10 @@
             padding-bottom: 30px;
         }
 
-
+        hr.solid {
+            border-top: 1px solid;
+            margin: 0px 15px;
+        }
 
 
     </style>
@@ -80,9 +83,9 @@
                 <header class="w3-container w3-orange">
                 <h5 class="w3-wide w3-text-black"><b>TODAY</b></h5>
                 </header>
-                <div style="width:280px;height:331px" class="w3-content">
+                <div style="width:280px;height:395px" class="w3-content">
                     <iframe scrolling="no" style="border:0;width:100%;height:100%"
-                    src="https://search.ch/meteo/widget/Bubikon?bgcolor=414247&amp;fgcolor=ffffff&amp;days=1"></iframe>
+                    src="https://search.ch/meteo/widget/Bubikon?bgcolor=2d2d2d&amp;fgcolor=ffffff"></iframe>
                 </div>
             </div>
         </div>
@@ -97,27 +100,8 @@
                     <p id="st2_bat">.</p>
                     <p id="st2_date">.</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4">
-                <header class="w3-container w3-orange">
-                <h6 class="w3-wide w3-text-black"><b>LINKS</b></h6>
-                </header>
-                <div class="w3-container">
-                    <div class="w3-ul w3-large">
-                        <li>
-                            <a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a>
-                        </li>
-                        <li>
-                            <a href="https://www.google.ch/" target="_blank">Google</a>
-                        </li>
-                        <li>
-                            <a href="https://docs.pyscript.net/latest" target="_blank">PyScript Docs</a>
-                        </li>
-                    </div>
-                </div>
+                <hr class="solid">
+                <div id="stromer_feed" class="w3-container"></div>
             </div>
         </div>
 
