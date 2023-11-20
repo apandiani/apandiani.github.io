@@ -1,4 +1,4 @@
-from pyscript import document
+from pyscript import document, display
 from pyodide.http import pyfetch
 from pyodide.ffi import create_proxy
 from js import document
@@ -10,6 +10,7 @@ async def clock():
     while True:
         now = dt.now()
         time = now.strftime("%d.%m.%Y %H:%M")
+        # display(time, target='#time_output')
         output_div = document.querySelector("#time_output")
         output_div.innerText = time
         await asyncio.sleep(2)
