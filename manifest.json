@@ -1,7 +1,7 @@
 {
     "name":"Anthony's Dashboard",
     "short_name":"MyDash",
-    "description":"This is my personal dashboard.",
+    "description":"This is my personal dashboard implemented with PyScript.",
     "theme_color":"#ff9800",
     "background_color":"#2d2d2d",
     "display":"fullscreen",

@@ -1,4 +1,4 @@
-from pyscript import document, display
+from pyscript import document, display, when
 from pyodide.http import pyfetch
 from pyodide.ffi import create_proxy
 from js import document
@@ -113,6 +113,7 @@ l_change = create_proxy(_l)
 document.querySelector("#input_chf").addEventListener("input", c_change)
 document.querySelector("#input_lkr").addEventListener("input", l_change)
 
+@when("click", "#lkr_reset")
 def reset_lkr(event):
     chf = document.querySelector("#input_chf")
     chf.value = None
