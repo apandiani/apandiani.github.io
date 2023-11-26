@@ -3,6 +3,9 @@ from pyodide.http import pyfetch
 from pyodide.ffi import create_proxy
 from js import document
 
+import matplotlib.pyplot as plt
+import io
+import base64
 from datetime import datetime as dt
 import asyncio
 
@@ -56,19 +59,46 @@ async def show_lkr():
     global lkr
     response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/lkr', method="GET")
     data = await response.json()
-    print(data)
-    lkr = data['LKR']
+    last_entry = data[-1]
+    print(last_entry)
+    lkr = last_entry['LKR']
     lkr = round(float(lkr), 1)
-    lkr_date = data['Date']
+    lkr_date = last_entry['Date']
     output_lkr = document.querySelector("#lkr")
     output_lkr.innerText = f'{lkr} LKR'
     output_lkr_date = document.querySelector("#lkr_date")
     output_lkr_date.innerText = f'Last update: {lkr_date}'
+
+    dat = [d['Date'] for d in data[-30:]]
+    lkr = [float(l['LKR']) for l in data[-30:]]
+    # print(lkr)
+    fig, ax = plt.subplots(facecolor="#373737")
+
+    plt.setp(ax.spines.values(), color='white')
+    plt.setp([ax.get_xticklines(), ax.get_yticklines()], color='white')
+    plt.tight_layout()
+    
+    ax.plot(dat, lkr, color='orange')
+    ax.set_facecolor(color="#373737")
+    ax.set_ylabel(ylabel='', color="white")
+    ax.tick_params(labelcolor='white')
+    ax.tick_params(axis='y', colors='white')
+    ax.get_xaxis().set_visible(False)
+
+    # display(fig, target="lkr_plot")
+    
+    img = io.BytesIO()
+    fig.savefig(img, format='png',
+                bbox_inches='tight')
+    img.seek(0)
+    encoded = base64.b64encode(img.getvalue())
+    output_plot = document.querySelector("#lkr_plot")
+    output_plot.src = "data:image/png;base64, {}".format(encoded.decode('utf-8'))
+
 lkr_data = asyncio.ensure_future(show_lkr())
 
 
 write_in_progress = False
-
 def isTemp(input_temp):
     try:
         _ = float(input_temp)
