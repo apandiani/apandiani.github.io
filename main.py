@@ -19,17 +19,50 @@ async def clock():
         await asyncio.sleep(2)
 run_clock = asyncio.ensure_future(clock())
 
-# async def get_data(url):
-#     response = await pyfetch(url=url, method="GET")
-#     # print(await response.json())
-#     data = await response.json()
-#     print(data)
-# server_test = asyncio.ensure_future(get_data('https://apandiani.eu.pythonanywhere.com/'))
+
+def format_time(v):
+    t = dt.fromtimestamp(v)
+    # tz_bub = pytz.timezone(TZ_BUB)
+    # tz_hyd = pytz.timezone(TZ_HYD)
+    # t = tz_bub.localize(t)
+    # if z == 'hyderabad':
+        # t = t.astimezone(tz_hyd)
+    t = t.strftime('%H:%M')
+    return t
+
+async def show_owm():
+    lat = 47.25659196257891
+    lon = 8.854448486942953
+    api_key = '1de97342bb9f3b6c38127ff0d7b979bd'
+    # url = f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid={api_key}&units=metric'
+    response = await pyfetch(url=f'https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid={api_key}&units=metric', method="GET")
+    data = await response.json()
+    # print(data)
+
+    update_time = data['current']['dt']
+    display(f'Last update: {format_time(update_time)}', target='owm_date', append=False)
+
+    current_temp = data['current']['temp']
+    current_sunrise = data['current']['sunrise']
+    current_sunset = data['current']['sunset']
+    current_weather = data['current']['weather'][0]['description']
+
+    current_list = [current_temp, current_sunrise, current_sunset, current_weather]
+    for i in current_list:
+        display(i, target='owm', append=True)
+
+    # sender = type(data['alerts'])
+    # print(sender)
+    # for i in sender:
+        # display(i, target='owm', append=True)
+
+owp_data = asyncio.ensure_future(show_owm())
+
 
 async def show_st2():
     response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/st2', method="GET")
     data = await response.json()
-    print(data)
+    # print(data)
     st2_tot = data['Total distance']
     st2_tot = int(float(st2_tot))
     st2_bat = data['Battery health']
@@ -46,7 +79,7 @@ st2_data = asyncio.ensure_future(show_st2())
 async def stromer_feed():
     response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/stromer', method="GET")
     feed = await response.json()
-    print(feed)
+    # print(feed)
     for x in feed:
         output_div = document.querySelector("#stromer_feed")
         child = document.createElement('p')
@@ -60,25 +93,25 @@ async def show_lkr():
     response = await pyfetch(url='https://apandiani.eu.pythonanywhere.com/lkr', method="GET")
     data = await response.json()
     last_entry = data[-1]
-    print(last_entry)
+    # print(last_entry)
     lkr = last_entry['LKR']
-    lkr = round(float(lkr), 1)
+    lkr = float(lkr)
     lkr_date = last_entry['Date']
     output_lkr = document.querySelector("#lkr")
-    output_lkr.innerText = f'{lkr} LKR'
+    output_lkr.innerText = f'{int(lkr)} LKR'
     output_lkr_date = document.querySelector("#lkr_date")
     output_lkr_date.innerText = f'Last update: {lkr_date}'
 
-    dat = [d['Date'] for d in data[-30:]]
-    lkr = [float(l['LKR']) for l in data[-30:]]
-    # print(lkr)
+    dat_list = [d['Date'] for d in data[-30:]]
+    lkr_list = [float(l['LKR']) for l in data[-30:]]
+    # print(lkr_list)
     fig, ax = plt.subplots(facecolor="#373737")
 
     plt.setp(ax.spines.values(), color='white')
     plt.setp([ax.get_xticklines(), ax.get_yticklines()], color='white')
     plt.tight_layout()
     
-    ax.plot(dat, lkr, color='orange')
+    ax.plot(dat_list, lkr_list, color='orange')
     ax.set_facecolor(color="#373737")
     ax.set_ylabel(ylabel='', color="white")
     ax.tick_params(labelcolor='white')
@@ -94,7 +127,6 @@ async def show_lkr():
     encoded = base64.b64encode(img.getvalue())
     output_plot = document.querySelector("#lkr_plot")
     output_plot.src = "data:image/png;base64, {}".format(encoded.decode('utf-8'))
-
 lkr_data = asyncio.ensure_future(show_lkr())
 
 
