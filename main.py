@@ -62,23 +62,23 @@ async def show_lkr():
     last_entry = data[-1]
     print(last_entry)
     lkr = last_entry['LKR']
-    lkr = round(float(lkr), 1)
+    lkr = float(lkr)
     lkr_date = last_entry['Date']
     output_lkr = document.querySelector("#lkr")
-    output_lkr.innerText = f'{lkr} LKR'
+    output_lkr.innerText = f'{int(lkr)} LKR'
     output_lkr_date = document.querySelector("#lkr_date")
     output_lkr_date.innerText = f'Last update: {lkr_date}'
 
-    dat = [d['Date'] for d in data[-30:]]
-    lkr = [float(l['LKR']) for l in data[-30:]]
-    # print(lkr)
+    dat_list = [d['Date'] for d in data[-30:]]
+    lkr_list = [float(l['LKR']) for l in data[-30:]]
+    # print(lkr_list)
     fig, ax = plt.subplots(facecolor="#373737")
 
     plt.setp(ax.spines.values(), color='white')
     plt.setp([ax.get_xticklines(), ax.get_yticklines()], color='white')
     plt.tight_layout()
     
-    ax.plot(dat, lkr, color='orange')
+    ax.plot(dat_list, lkr_list, color='orange')
     ax.set_facecolor(color="#373737")
     ax.set_ylabel(ylabel='', color="white")
     ax.tick_params(labelcolor='white')
