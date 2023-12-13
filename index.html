@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <title>anthony's dashboard</title>
@@ -21,139 +21,117 @@
         }
     </script>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"> -->
     
-    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
-    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
     
-    <style>
-
-        body {
-            background-color: #202020;
-            padding: 15px;
-            margin: 0px;
-        }
-
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Calibri Light";
-            color: white;
-        }
-
-        hr.solid {
-            border-top: 1px solid;
-            margin: 0px 15px;
-            color: orange;
-        }
-
-        a { text-decoration: none; }
-
-    </style>
+    <script type="module" src="https://pyscript.net/releases/2023.12.1/core.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.12.1/core.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
 
 </head>
 
 <body>
-    <div class="w3-row w3-wide w3-center">
-        <h3>anthony's dashboard</h3>
+    <div class="container text-center pt-4">
+    <h1>anthony's dashboard</h1>
+        <p id="time_output" class="font-monospace fw-lighter">.</p>
     </div>
-    <div class="w3-row w3-center w3-wide w3-border-bottom">
-        <p id="time_output">.</p>
-    </div>
+    <div class="container px-4">
 
-    <div class="w3-row">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4" style='background-color: #373737'>
-                <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>TODAY</b></h5>
-                </header>
-                <div style="width:280px;height:352px" class="w3-content">
-                    <iframe scrolling="no" style="border:0;width:100%;height:100%"
-                    src="https://search.ch/meteo/widget/Bubikon.en.html?bgcolor=373737&amp;fgcolor=ffffff&amp;days=1"></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4" style='background-color: #373737'>
-                <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>OPENWEATHERMAP</b></h5>
-                </header>
-                <div class="w3-container w3-center">
-                    <p id="owm">.</p>
-                </div>
-                <hr class="solid w3-margin-top">
-                <div class="w3-container w3-center w3-small">
-                    <p id="owm_date">.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4" style='background-color: #373737'>
-                <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>ST2</b></h5>
-                </header>
-                <table class="w3-table w3-margin-top">
-                    <tr>
-                        <td>Total distance</th>
-                        <td>Battery health</th>
-                    </tr>
-                    <tr >
-                        <td id="st2_tot" class="w3-xxlarge">.</td>
-                        <td id="st2_bat" class="w3-xxlarge">.</td>
-                    </tr>
-                </table>
-                <div class="w3-container w3-center w3-small">
-                    <p id="st2_date">.</p>
-                </div>
-                <hr class="solid">
-                <div id="stromer_feed" class="w3-container"></div>
-                <hr class="solid">
-                <div class="w3-section w3-center w3-small w3-wide">
-                    <a href="https://www.stromerforum.ch" target="_blank" rel="noopener noreferrer">Stromer Forum</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-container w3-quarter w3-section">
-            <div class="w3-card-4" style='background-color: #373737'>
-                <div class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>SRI LANKAN RUPEE</b></h5>
-                </div>
-                <div class="w3-row w3-container w3-center">
-                    <p id='lkr' class="w3-xxlarge">.</p>
-                </div>
-                <div class="w3-cell-row">
-                    <div class="w3-cell w3-container">
-                        <input id="input_chf" class="w3-input" type="number"
-                        placeholder="CHF">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h5 text-black" style='background-color: orange'>
+                        TODAY
+                    <!-- <h2 class="custom">TODAY</h2> -->
                     </div>
-                    <div class="w3-cell w3-container">
-                        <button id="lkr_reset" class="w3-button w3-orange">RESET</button>
-                    </div>
-                    <div class="w3-cell w3-container">
-                        <input id="input_lkr" class="w3-input" type="number"
-                        placeholder="LKR">
+                    <div class="card-body">
+                        <div style="height:280px">
+                            <iframe scrolling="no" style="border:0;width:100%;height:100%"
+                            src="https://search.ch/meteo/widget/Bubikon.en.html?bgcolor=373737&amp;fgcolor=b4b4b4&amp;days=1"></iframe>
+                        </div>
                     </div>
                 </div>
-                <hr class="solid w3-margin-top">
-                <div class="w3-container w3-center">
-                    <p class="w3-wide">Progress over last month</p>
-                    <img id="lkr_plot" class="w3-image">
-                </div>
-                <hr class="solid w3-margin-top">
-                <div class="w3-container w3-center w3-small">
-                    <p id="lkr_date">.</p>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h5">
+                        OPENWEATHERMAP
+                    </div>
+                    <div class="card-body">
+                        <p id="owm">.</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p id="owm_date" class="card-text">.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="w3-center w3-border-top">
-        <div class="w3-bar w3-margin-top">
-            <a href="mailto:anthony.pandiani@gmail.com">
-            <button class="w3-button w3-orange">anthony.pandiani@gmail.com</button>
-            </a>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h5">
+                        ST2
+                    </div>
+                    <div class="card-body">
+                        <div class="row row-cols-2 text-center">
+                            <div class="col">Total distance</div>
+                            <div class="col">Battery health</div>
+                            <div id="st2_tot" class="col display-3">.</div>
+                            <div id="st2_bat" class="col display-3">.</div>
+                        </div>
+                        <p id="st2_date" class="container text-center pt-3">.</p>
+                        <hr class="solid">
+                        <div id="stromer_feed"></div>
+                    </div>
+                    <div class="card-footer text-center fw-lighter">
+                        <a href="https://www.stromerforum.ch" class="link-underline-opacity-0 link-light"
+                        target="_blank" rel="noopener noreferrer">
+                            Stromer Forum
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h5">
+                        SRI LANKAN RUPEE
+                    </div>
+                    <div class="card-body">
+                        <div id='lkr' class="container text-center display-3 py-4">.</div>
+                        <div class="input-group py-2">
+                            <input id="input_chf" class="form-control" type="number" placeholder="CHF">
+                            <button id="lkr_reset" class="btn" type="button">RESET</button>
+                            <input id="input_lkr" class="form-control" type="number" placeholder="LKR">
+                        </div>
+                        <hr>
+                        <div class="container">
+                            <p class="text-center">Progress over last month</p>
+                            <img id="lkr_plot" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p id="lkr_date" class="card-text">.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h5">
+                        ABOUT ME
+                    </div>
+                    <div class="card-body">
+                        <!-- <p id="owm">.</p> -->
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="mailto:anthony.pandiani@gmail.com">
+                            <button class="btn">anthony.pandiani@gmail.com</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -166,7 +144,7 @@
     <script type="py" src="./clock.py" async></script>
     <script type="py" src="./owm.py" async></script>
     <script type="py" src="./st2.py" async></script>
-    <script type="py" src="./lkr.py" async></script>
+    <script type="py" src="./lkr.py"></script>
 </body>
 
 </html>

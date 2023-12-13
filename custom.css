@@ -1,0 +1,19 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Calibri light';
+}
+
+.btn {
+    background-color: orange;
+    color: black;
+    font-weight: 400;
+}
+
+.card {
+    background-color: #373737;
+}
+
+.card-header {
+    background-color: orange;
+    color: black;
+    font-weight: 600;
+}
