@@ -29,10 +29,8 @@ async def show_owm():
     current_sunrise = data['current']['sunrise']
     current_sunset = data['current']['sunset']
     current_weather = data['current']['weather'][0]['description']
-    current_day = data['daily'][0]['summary']
 
-    current_list = [current_temp, current_sunrise, current_sunset, current_weather, 
-                    current_day]
+    current_list = [current_temp, current_sunrise, current_sunset, current_weather]
     for i in current_list:
         display(i, target='owm', append=True)
 

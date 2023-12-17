@@ -1,7 +1,7 @@
 from pyscript import document, display, when
 from pyodide.http import pyfetch
 from pyodide.ffi import create_proxy
-import asyncio
+
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -45,7 +45,7 @@ async def show_lkr():
     encoded = base64.b64encode(img.getvalue())
     output_plot = document.querySelector("#lkr_plot")
     output_plot.src = "data:image/png;base64, {}".format(encoded.decode('utf-8'))
-lkr = asyncio.ensure_future(show_lkr())
+await show_lkr()
 
 
 write_in_progress = False
