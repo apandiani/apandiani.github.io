@@ -1,2 +1,4 @@
-test.py
-owm_sample.json
+old/st2.py
+old/owm.py
+old/lkr.py
+old/clock.py

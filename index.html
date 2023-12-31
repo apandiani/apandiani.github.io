@@ -47,6 +47,10 @@
         }
 
         a { text-decoration: none; }
+        
+        td.t_values {
+            font-size: 2em;
+        }
 
     </style>
 
@@ -77,11 +81,26 @@
         <div class="w3-container w3-quarter w3-section">
             <div class="w3-card-4" style='background-color: #373737'>
                 <header class="w3-container w3-orange">
-                <h5 class="w3-wide w3-text-black"><b>OPENWEATHERMAP</b></h5>
+                <h5 class="w3-wide w3-text-black"><b>WEATHER RÜTI</b></h5>
                 </header>
-                <div class="w3-container w3-center">
-                    <p id="owm">.</p>
-                </div>
+                <table class="w3-container" style="width: 100%;">
+                    <tr>
+                        <td>Temperature</th>
+                        <td>Weather</th>
+                    </tr>
+                    <tr >
+                        <td class="t_values" id="owm_tem">.</td>
+                        <td class="t_values" id="owm_des">.</td>
+                    </tr>
+                    <tr>
+                        <td>Sunrise</th>
+                        <td>Sunset</th>
+                    </tr>
+                    <tr >
+                        <td class="t_values" id="owm_ris">.</td>
+                        <td class="t_values" id="owm_set">.</td>
+                    </tr>
+                </table>
                 <hr class="solid w3-margin-top">
                 <div class="w3-container w3-center w3-small">
                     <p id="owm_date">.</p>
@@ -94,14 +113,14 @@
                 <header class="w3-container w3-orange">
                 <h5 class="w3-wide w3-text-black"><b>ST2</b></h5>
                 </header>
-                <table class="w3-table w3-margin-top">
+                <table class="w3-container" style="width: 100%;">
                     <tr>
                         <td>Total distance</th>
                         <td>Battery health</th>
                     </tr>
                     <tr >
-                        <td id="st2_tot" class="w3-xxlarge">.</td>
-                        <td id="st2_bat" class="w3-xxlarge">.</td>
+                        <td class="t_values" id="st2_tot">.</td>
+                        <td class="t_values" id="st2_bat">.</td>
                     </tr>
                 </table>
                 <div class="w3-container w3-center w3-small">
@@ -126,15 +145,17 @@
                 </div>
                 <div class="w3-cell-row">
                     <div class="w3-cell w3-container">
-                        <input id="input_chf" class="w3-input" type="number"
-                        placeholder="CHF">
+                        <input id="input_chf" class="w3-input" type="number" placeholder="CHF"
+                        oninput="temperatureConverter(this.id,this.value)"
+                        onchange="temperatureConverter(this.id,this.value)">
                     </div>
                     <div class="w3-cell w3-container">
-                        <button id="lkr_reset" class="w3-button w3-orange">RESET</button>
+                        <button onclick="resetLKR()" class="w3-button w3-orange">RESET</button>
                     </div>
                     <div class="w3-cell w3-container">
-                        <input id="input_lkr" class="w3-input" type="number"
-                        placeholder="LKR">
+                        <input id="input_lkr" class="w3-input" type="number" placeholder="LKR"
+                        oninput="temperatureConverter(this.id,this.value)"
+                        onchange="temperatureConverter(this.id,this.value)">
                     </div>
                 </div>
                 <hr class="solid w3-margin-top">
@@ -157,16 +178,14 @@
         </div>
     </div>
 
-    <py-config>
-        {
-            "packages": ["matplotlib", "pytz"]
+    <script src="getData.js"></script>
+    <script>
+        setInterval(clock, 1000);
+        function clock() {
+          const d = new Date();
+          document.getElementById("time_output").innerHTML = d.toLocaleString();
         }
-    </py-config>
-
-    <script type="py" src="./clock.py" async></script>
-    <script type="py" src="./owm.py" async></script>
-    <script type="py" src="./st2.py" async></script>
-    <script type="py" src="./lkr.py" async></script>
+    </script>
 </body>
 
 </html>
