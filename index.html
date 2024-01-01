@@ -58,7 +58,7 @@
 
 <body>
     <div class="w3-row w3-wide w3-center">
-        <h3>anthony's dashboard</h3>
+        <h3 style="margin: 0px;">anthony's dashboard</h3>
     </div>
     <div class="w3-row w3-center w3-wide w3-border-bottom">
         <p id="time_output">.</p>
@@ -71,9 +71,7 @@
                 <header class="w3-container w3-orange">
                 <h5 class="w3-wide w3-text-black"><b>TODAY</b></h5>
                 </header>
-                <div style="width:280px;height:352px" class="w3-content">
-                    <iframe scrolling="no" style="border:0;width:100%;height:100%"
-                    src="https://search.ch/meteo/widget/Bubikon.en.html?bgcolor=373737&amp;fgcolor=ffffff&amp;days=1"></iframe>
+                <div>
                 </div>
             </div>
         </div>
@@ -90,7 +88,9 @@
                     </tr>
                     <tr >
                         <td class="t_values" id="owm_tem">.</td>
-                        <td class="t_values" id="owm_des">.</td>
+                        <td>
+                            <p><i id="owm_des">.</i></p>
+                        </td>
                     </tr>
                     <tr>
                         <td>Sunrise</th>
@@ -101,6 +101,10 @@
                         <td class="t_values" id="owm_set">.</td>
                     </tr>
                 </table>
+                <div class="w3-container">
+                    <img class="w3-image"
+                    src="https://search.ch/meteo/images/chart/rueti-zh.svg?width=762&height=254&fgcolor=000000&t=1704144000">
+                </div>
                 <hr class="solid w3-margin-top">
                 <div class="w3-container w3-center w3-small">
                     <p id="owm_date">.</p>
@@ -129,8 +133,8 @@
                 <hr class="solid">
                 <div id="stromer_feed" class="w3-container"></div>
                 <hr class="solid">
-                <div class="w3-section w3-center w3-small w3-wide">
-                    <a href="https://www.stromerforum.ch" target="_blank" rel="noopener noreferrer">Stromer Forum</a>
+                <div class="w3-container w3-center w3-small">
+                    <p><a href="https://www.stromerforum.ch" target="_blank" rel="noopener noreferrer">Stromer Forum</a></p>
                 </div>
             </div>
         </div>
@@ -169,6 +173,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="w3-container w3-quarter w3-section">
+            <div class="w3-card-4" style='background-color: #373737'>
+                <header class="w3-container w3-orange">
+                <h5 class="w3-wide w3-text-black"><b>Hiru FM</b></h5>
+                </header>
+                <div class="w3-container w3-center w3-margin">
+                    <audio controls>
+                        <source src="https://radio.lotustechnologieslk.net:2020/stream/hirufmgarden" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <hr class="solid">
+                <div class="w3-container w3-center w3-small">
+                    <p><a href="https://www.hirufm.lk/" target="_blank" rel="noopener noreferrer">Hiru FM</a></p>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="w3-center w3-border-top">
         <div class="w3-bar w3-margin-top">

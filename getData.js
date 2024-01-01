@@ -51,7 +51,7 @@ async function getOWM() {
     const obj = JSON.parse(txt);
     const current_temp = obj['current']['temp']
     output_temp = document.querySelector("#owm_tem")
-    output_temp.innerText = current_temp + ' °C'
+    output_temp.innerText = current_temp.toFixed(1) + ' °C'
     let current_sunrise = obj['current']['sunrise']
     current_sunrise = owm_time(current_sunrise)
     output_rise = document.querySelector("#owm_ris")
