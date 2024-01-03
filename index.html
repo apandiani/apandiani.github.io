@@ -23,9 +23,9 @@
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"> -->
-    
-    <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
-    <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://pyscript.net/releases/2023.11.1/core.css" /> -->
     
     <style>
 
@@ -57,11 +57,8 @@
 </head>
 
 <body>
-    <div class="w3-row w3-wide w3-center">
-        <h3 style="margin: 0px;">anthony's dashboard</h3>
-    </div>
-    <div class="w3-row w3-center w3-wide w3-border-bottom">
-        <p id="time_output">.</p>
+    <div class="w3-row w3-wide w3-center w3-border-bottom">
+        <h3 style="margin-bottom: 10px;">anthony's dashboard</h3>
     </div>
 
     <div class="w3-row">
@@ -71,7 +68,19 @@
                 <header class="w3-container w3-orange">
                 <h5 class="w3-wide w3-text-black"><b>TODAY</b></h5>
                 </header>
-                <div>
+                <table class="w3-container" style="width: 100%;">
+                    <tr>
+                        <td id="today_weekday"></td>
+                        <td></td>
+                    </tr>
+                    <tr style="font-size: xx-large;">
+                        <td id="today_date"></td>
+                        <td id="time_output"></td>
+                    </tr>
+                </table>
+                <hr class="solid">
+                <div class="w3-container">
+                    <p>News</p>
                 </div>
             </div>
         </div>
@@ -93,8 +102,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Sunrise</th>
-                        <td>Sunset</th>
+                        <td>Sunrise</td>
+                        <td>Sunset</td>
                     </tr>
                     <tr >
                         <td class="t_values" id="owm_ris">.</td>
@@ -150,22 +159,22 @@
                 <div class="w3-cell-row">
                     <div class="w3-cell w3-container">
                         <input id="input_chf" class="w3-input" type="number" placeholder="CHF"
-                        oninput="temperatureConverter(this.id,this.value)"
-                        onchange="temperatureConverter(this.id,this.value)">
+                        oninput="currencyConverter(this.id,this.value)"
+                        onchange="currencyConverter(this.id,this.value)">
                     </div>
                     <div class="w3-cell w3-container">
                         <button onclick="resetLKR()" class="w3-button w3-orange">RESET</button>
                     </div>
                     <div class="w3-cell w3-container">
                         <input id="input_lkr" class="w3-input" type="number" placeholder="LKR"
-                        oninput="temperatureConverter(this.id,this.value)"
-                        onchange="temperatureConverter(this.id,this.value)">
+                        oninput="currencyConverter(this.id,this.value)"
+                        onchange="currencyConverter(this.id,this.value)">
                     </div>
                 </div>
                 <hr class="solid w3-margin-top">
                 <div class="w3-container w3-center">
                     <p class="w3-wide">Progress over last month</p>
-                    <img id="lkr_plot" class="w3-image">
+                    <div id="lkr_plot" style="width:100%"></div>
                 </div>
                 <hr class="solid w3-margin-top">
                 <div class="w3-container w3-center w3-small">
@@ -206,7 +215,7 @@
         setInterval(clock, 1000);
         function clock() {
           const d = new Date();
-          document.getElementById("time_output").innerHTML = d.toLocaleString();
+          document.getElementById("time_output").innerHTML = d.toLocaleTimeString();
         }
     </script>
 </body>

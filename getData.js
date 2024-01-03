@@ -1,7 +1,33 @@
+getToday();
 getOWM();
 getST2("https://apandiani.eu.pythonanywhere.com/st2");
 getStromer("https://apandiani.eu.pythonanywhere.com/stromer");
 getLKR("https://apandiani.eu.pythonanywhere.com/lkr");
+// myAPI("https://script.google.com/macros/s/AKfycbxAg0eeS3GE_QhOudCv46uCnoMxqpo15fPcPt-FRiE/dev");
+
+// async function myAPI(url) {
+//     const get = await fetch(url);
+//     const txt = await get.text();
+//     const obj = JSON.parse(txt)
+//     output = document.querySelector("#myapi")
+//     output.innerText = obj
+// };
+
+async function getToday() {
+    const options = {
+        // weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+    const d = new Date()
+    const weekday = d.toLocaleString('en-us', {  weekday: 'long' });
+    const date = d.toLocaleDateString('en-us', options);
+    output_weekday = document.querySelector("#today_weekday");
+    output_weekday.innerText = weekday;
+    output_date = document.querySelector("#today_date");
+    output_date.innerText = date;
+}
 
 async function getST2(url) {
     const get = await fetch(url);
@@ -74,16 +100,75 @@ async function getLKR(url) {
     const get = await fetch(url);
     const txt = await get.text();
     const obj = JSON.parse(txt);
-    const last = obj[obj.length-1];
-    window.lkr = last['LKR'];
-    const date = last['Date'];
+    const last01 = obj[obj.length-1];
+    window.lkr = last01['LKR'];
+    const date = last01['Date'];
     output_lkr = document.querySelector("#lkr");
     output_lkr.innerText = Math.round(lkr) + ' LKR';
     output_date = document.querySelector("#lkr_date");
     output_date.innerText = 'Last update: ' + date;
+
+    const last30 = obj.slice(-30);
+    const xArray = [];
+    const yArray = [];
+    // lkr_data.push(['Index', 'LKR'])
+    for (let x in last30) {
+        let value = last30[x]['LKR'];
+        xArray.push(Number(x));
+        yArray.push(Number(value));
+    };
+    // console.log(yArray)
+
+    // Define Data
+    const data = [{
+    x: xArray,
+    y: yArray,
+    mode:"lines",
+    line: {
+    color: 'orange',
+    width: 2
+    }
+    }];
+
+    // Define Layout
+    const layout = {
+    height: 300,
+    margin: {
+    autoexpand: true,
+    l: 30,
+    r: 30,
+    b: 30,
+    t: 30,
+    pad: 0,
+    },
+    xaxis: {
+    // title: 'GDP per Capita',
+    range: [0,30],
+    showgrid: true,
+    zeroline: false,
+    showline: false,
+    gridcolor: 'grey',
+    },
+    yaxis: {
+    // title: 'Percent',
+    showgrid: true,
+    zeroline: false,
+    showline: false,
+    gridcolor: 'grey',
+    },
+    plot_bgcolor: '#373737',
+    paper_bgcolor: '#373737',
+    font: {
+        color: 'white',
+        size: 12,
+    }
+    };
+
+    // Display using Plotly
+    Plotly.newPlot("lkr_plot", data, layout, {staticPlot: true});
 };
 
-function temperatureConverter(source,valNum) {
+function currencyConverter(source,valNum) {
     valNum = parseFloat(valNum);
     var input_chf = document.getElementById("input_chf");
     var input_lkr = document.getElementById("input_lkr");
